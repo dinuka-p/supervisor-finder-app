@@ -1,32 +1,24 @@
-import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
+
+import { BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
 import './App.css';
+import Dashboard from './components/Dashboard';
+import Page2 from './components/Page2';
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(0);
-
-  useEffect(() => {
-    fetch("/api/time").then(res => res.json()).then((data) => {
-      setCurrentTime(data.time);
-    })
-  }, [])
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>Current time: {currentTime}</p>
+        <BrowserRouter>
+          <div>
+            <NavLink className="App-link" to="/">Home</NavLink> | <NavLink className="App-link" to="/page2">Page 2</NavLink>
+          </div>
+          <Routes>
+              <Route exact path="/" element={<Dashboard/>}/>
+              <Route path="/page2" element={<Page2/>}/>
+          </Routes>
+        </BrowserRouter>
+        
       </header>
     </div>
   );
