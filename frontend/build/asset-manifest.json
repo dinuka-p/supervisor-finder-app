@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.50666743.css",
+    "main.css": "/static/css/main.29f15de8.css",
     "main.js": "/static/js/main.b1b16fe9.js",
     "static/js/453.d855a71b.chunk.js": "/static/js/453.d855a71b.chunk.js",
     "static/media/uob-logo.png": "/static/media/uob-logo.4620f39e36b39af6f8ad.png",
@@ -10,12 +10,12 @@
     "static/media/submit-timeline.png": "/static/media/submit-timeline.f6ee8353edadab33e336.png",
     "static/media/default-profile.jpg": "/static/media/default-profile.80a247d45aa04bc0be83.jpg",
     "index.html": "/index.html",
-    "main.50666743.css.map": "/static/css/main.50666743.css.map",
+    "main.29f15de8.css.map": "/static/css/main.29f15de8.css.map",
     "main.b1b16fe9.js.map": "/static/js/main.b1b16fe9.js.map",
     "453.d855a71b.chunk.js.map": "/static/js/453.d855a71b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.50666743.css",
+    "static/css/main.29f15de8.css",
     "static/js/main.b1b16fe9.js"
   ]
 }
