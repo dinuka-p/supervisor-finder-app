@@ -146,7 +146,7 @@ function SupervisorProfiles() {
         <motion.div layout className="supervisor-boxes">
           {filteredSupervisors.filter((supervisor) => {
                 //search bar handling
-                if (searchTerm == "") {
+                if (searchTerm === "") {
                     return supervisor
                 } else if (
                     supervisor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
