@@ -31,7 +31,7 @@ function Sidebar() {
     useEffect(() => {
         //update profile photo
         if (auth && auth.photoPath && auth.photoPath !== "") {
-            setProfilePhoto("https://uob-supervisor-finder-e2e8d00717a3.herokuapp.com"+auth.photoPath);
+            setProfilePhoto("https://uob-supervisor-finder-e2e8d00717a3.herokuapp.com/"+auth.photoPath);
             //setProfilePhoto(require("../images/default-profile.jpg"));
         } else {
             setProfilePhoto(require("../images/default-profile.jpg"));
