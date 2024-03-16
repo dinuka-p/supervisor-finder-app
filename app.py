@@ -44,5 +44,14 @@ def index():
 def serve():
     return send_from_directory(app.static_folder, "index.html")
 
+@app.route("/api/supervisor-profiles", methods=["GET"])
+def display_profiles():
+    supervisors = Supervisors.query.all()
+    output = []
+    for supervisor in supervisors:
+        supervisor_data = {"id":supervisor.supervisorID,"name": supervisor.supervisorName, "email": supervisor.supervisorEmail, "projects":supervisor.projectKeywords, "filter_words":supervisor.filterWords}
+        output.append(supervisor_data)
+    return jsonify({"supervisors": output})
+
 if __name__ == "__main__":
     app.run()

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useAuth } from "./context/AuthProvider";
 import Sidebar from './components/Sidebar';
+import SupervisorProfiles from "./components/SupervisorProfiles";
 
 function App() {
 
@@ -13,6 +14,9 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Sidebar/>
+        <Routes>
+          <Route path="/" element={<SupervisorProfiles />} />
+        </Routes>
       </div>
 
     </BrowserRouter>
