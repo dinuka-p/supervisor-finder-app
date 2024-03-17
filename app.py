@@ -466,6 +466,7 @@ def submit_preferences():
     preferences = ",".join(request_data["preferred"])
     projects = ",".join(request_data["projects"])
     coding = request_data["coding"]
+    student = False
     search = Users.query.filter_by(userEmail=userEmail).first()
     if search.userRole == "Student":
         user = StudentPreferences.query.filter_by(userEmail=userEmail).first()
