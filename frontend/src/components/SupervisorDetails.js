@@ -37,9 +37,9 @@ function SupervisorDetails() {
                 data => {
                     const details = data.supervisor_info
                     setSupervisorData(details);
-                    if (details?.photo && details.photo !== null) {
-                        setProfilePhoto("http://127.0.0.1:8088/"+details.photo);
-                    }
+                    // if (details?.photo && details.photo !== null) {
+                    //     setProfilePhoto("http://127.0.0.1:8088/"+details.photo);
+                    // }
                 }
                 )
         }

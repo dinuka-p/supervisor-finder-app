@@ -93,10 +93,10 @@ function UserProfile() {
     setSubmitStatus("Submit");
   }
 
-  const handlePicChange = (e) => {
-    setPicture(e.target.files[0]);
-    handleFormUpdate();
-  };
+  // const handlePicChange = (e) => {
+  //   setPicture(e.target.files[0]);
+  //   handleFormUpdate();
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -127,7 +127,6 @@ function UserProfile() {
         const data = await response.json();
         if (data.response === 200) {
             setSubmitStatus("Submitted!");
-            //auth.photoPath = data.userPhotoPath;
             const email = auth.email;
             const name = auth.name;
             const role  = auth.role;
@@ -156,13 +155,13 @@ function UserProfile() {
                 <div className="edit-profile-uneditable">
                   <p>Name: {profileData.profileName}</p>
                   <p>Email: {profileData.profileEmail}</p>
-                  <input className="edit-profile-image"
+                  {/* <input className="edit-profile-image"
                       type="file"
                       id="picture" 
                       name="picture"
                       autoComplete="off"
                       onChange={handlePicChange}
-                  />
+                  /> */}
                 </div>
 
               
