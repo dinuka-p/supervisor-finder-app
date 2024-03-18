@@ -265,7 +265,10 @@ def supervisor_profile(getemail):
     if not getemail:
         return jsonify({"error": "Unauthorized Access"}), 401
     supervisor = ActiveSupervisors.query.filter_by(supervisorEmail=getemail).first()
-    filters_list = [tag.strip() for tag in supervisor.filterWords.split(',')]
+    if supervisor.filterWords:
+        filters_list = [tag.strip() for tag in supervisor.filterWords.split(',')]
+    else:
+        filters_list = []
     response_body = {
         "name": supervisor.supervisorName,
         "email": supervisor.supervisorEmail,
@@ -491,7 +494,7 @@ def edit_profile():
     booking = request.form.get("booking")
     examples = request.form.get("examples")
     capacity = request.form.get("capacity")
-    selectedFilters = request.form.getlist("selectedFilters[]")
+    selectedFilters = request.form.getlist("selectedFilters")
 
     file = request.files.get("picture")
 
