@@ -133,7 +133,7 @@ function Preferences() {
         <div className="page-content">
             <h1 className="page-title">Preferences</h1>
             <p className="page-instructions">Mark {group} as a favourite by clicking the 'Favourite' button on their profiles. Favourited {group} will be displayed in the 'Your Favourites' list. 
-            When you're ready, add {group} to the 'Submit Preferences' list in the order of your preference before submitting!</p>
+            When you're ready, add {group} to the 'Submit Preferences' list in the order of your preference before submitting.</p>
 
             {auth.role === "Student" && (
                 <p className="page-instructions">
@@ -197,7 +197,11 @@ function Preferences() {
                                             </div>
                                             <ul className="preferred-list">
                                                 {preferred.map((choice, index) => (
-                                                    <li className="preferred-list-option" key={index}>{choice.name}</li>
+                                                    <li className="preferred-list-option" 
+                                                        key={index}
+                                                        onClick={() => handlePreference(choice)}>
+                                                        {choice.name}
+                                                    </li>
                                                 ))}
                                             </ul>
                                         </div>
@@ -245,18 +249,20 @@ function Preferences() {
                                         <h4>Project areas:</h4>
                                         <div className="preferences-checkbox-container">
                                             {allFilters.map((category, idx) => (
-                                                <div className="preference-areas" key={idx}>
-                                                    <input className="preference-area-option" 
-                                                        type="checkbox" 
-                                                        value={category}
-                                                        name="areas"
-                                                        onChange={(e) => {
-                                                            handleCheckboxClick(e, category);
-                                                            handleFormUpdate();
-                                                          }}
-                                                        checked={selectedFilters.includes(category)}
-                                                    />
-                                                    <label>{category}</label>
+                                                <div  key={idx}>
+                                                    <label className="preference-areas">
+                                                        <input className="preference-area-option" 
+                                                            type="checkbox" 
+                                                            value={category}
+                                                            name="areas"
+                                                            onChange={(e) => {
+                                                                handleCheckboxClick(e, category);
+                                                                handleFormUpdate();
+                                                            }}
+                                                            checked={selectedFilters.includes(category)}
+                                                        />
+                                                        {category}
+                                                    </label>
                                                 </div>
                                             ))}
                                         </div>

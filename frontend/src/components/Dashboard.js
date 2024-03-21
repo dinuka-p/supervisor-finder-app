@@ -77,18 +77,20 @@ function Dashboard() {
                       <p className="dashboard-text">{countdown} days to go</p>
                     </div>
                   </div>
-                  {timeline === 1 && (
-                    <img className="timeline" src={require("../images/profile-timeline.png")} alt="Supervisor Allocation Timeline" />
-                  )}
-                  {timeline === 2 && (
-                    <img className="timeline" src={require("../images/find-timeline.png")} alt="Supervisor Allocation Timeline" />
-                  )}
-                  {timeline === 3 && (
-                    <img className="timeline" src={require("../images/submit-timeline.png")} alt="Supervisor Allocation Timeline" />
-                  )}
-                  {timeline === 4 && (
-                    <img className="timeline" src={require("../images/wait-timeline.png")} alt="Supervisor Allocation Timeline" />
-                  )}
+                  <div className="dashboard-timeline-container">
+                    {timeline === 1 && (
+                      <img className="timeline" src={require("../images/profile-timeline.png")} alt="Supervisor Allocation Timeline" />
+                    )}
+                    {timeline === 2 && (
+                      <img className="timeline" src={require("../images/find-timeline.png")} alt="Supervisor Allocation Timeline" />
+                    )}
+                    {timeline === 3 && (
+                      <img className="timeline" src={require("../images/submit-timeline.drawio.png")} alt="Supervisor Allocation Timeline" />
+                    )}
+                    {timeline === 4 && (
+                      <img className="timeline" src={require("../images/wait-timeline.png")} alt="Supervisor Allocation Timeline" />
+                    )}
+                  </div>
                 </div>
                 )}
       </div>

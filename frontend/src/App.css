@@ -112,6 +112,7 @@
   border-radius: 10px;
   font-size: large;
   padding: 5px 15px;
+  cursor: pointer;
 }
 
 .auth-button:hover {
@@ -143,6 +144,7 @@
   font-size: medium;
   font-weight: bold;
   margin-bottom: 0px;
+  margin-top: 7px;
 }
 
 .sidebar-profile-details #role {
@@ -229,6 +231,7 @@
   border-radius: 10px;
   padding: 5px 8px;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .search-bar-input {
@@ -267,6 +270,7 @@
   border-radius: 10px;
   border: none;
   font-size: smaller;
+  cursor: pointer;
 }
 
 .filter-button:hover {
@@ -293,6 +297,7 @@
   margin: 10px;
   text-align: left;
   padding: 0% 7%;
+  cursor: pointer;
 }
 
 .supervisor-summary:hover {
@@ -359,6 +364,7 @@
 
 .back-button:hover {
   color:cadetblue ;
+  cursor: pointer;
 }
 
 .back-button-text {
@@ -429,6 +435,7 @@
   height: 30px;
   color: #f1f1f1;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .profile-card-data {
@@ -558,6 +565,12 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+.success-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .success-form-link, .success-form-link:visited {
   color: #014254;
@@ -617,6 +630,7 @@
   border: none;
   color: #f1f1f1;
   background-color: #014254;
+  cursor: pointer;
 }
 
 .auth-submit:hover {
@@ -661,6 +675,7 @@
 .favourites-list-option {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .favourites-list-option-name {
@@ -705,6 +720,7 @@
   border: 1px solid cadetblue;
   padding: 10px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .preferences-submit-button {
@@ -721,6 +737,7 @@
   padding: 10px;
   width: 110px;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 .preferences-submit-button:hover {
@@ -754,6 +771,7 @@
   display: flex;
   align-items: baseline;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .preference-area-option {
@@ -762,6 +780,7 @@
 
 .preference-coding-option {
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .div-centered {
@@ -867,8 +886,10 @@
 }
 
 .timeline {
-  width: 80%;
-  margin-top: 60px;
+  width: 95%;
+  height:fit-content;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .dashboard-container {
@@ -884,6 +905,15 @@
   border-radius: 10px;
   width: 80%;
   height: 140px;
+  margin-top: 20px;
+}
+
+.dashboard-timeline-container {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 80%;
   margin-top: 20px;
 }
 
@@ -1050,6 +1080,10 @@
 }
 
 .how-to-auth {
-  margin: 0 15px;
-  margin-top: 30px;
+  width: 80%;
+  margin-top: 10px;
+  padding: 15px;
+  padding-top: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
 }

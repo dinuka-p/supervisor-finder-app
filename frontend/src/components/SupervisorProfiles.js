@@ -26,6 +26,14 @@ function SupervisorProfiles() {
         setFilteredSupervisors(data.supervisors.sort((a, b) => a.name.localeCompare(b.name)))
       }
       )
+
+      fetch("/api/supervisor-filters").then(
+        res => res.json()
+        ).then(
+        data => {
+            setAllFilters(data.allFilters)
+        }
+        )
     } else {
       fetch("/api/active-supervisor-profiles").then(
         res => res.json()
@@ -35,18 +43,16 @@ function SupervisorProfiles() {
           setFilteredSupervisors(data.supervisors.sort((a, b) => a.name.localeCompare(b.name)))
         }
         )
+
+        fetch("/api/active-supervisor-filters").then(
+          res => res.json()
+          ).then(
+          data => {
+              setAllFilters(data.allFilters)
+          }
+          )
     }
   }, [auth])
-
-  useEffect(() => {
-    fetch("/api/supervisor-filters").then(
-    res => res.json()
-    ).then(
-    data => {
-        setAllFilters(data.allFilters)
-    }
-    )
-  }, [])
 
   useEffect(() => {
     filterSupervisors();
