@@ -4,10 +4,11 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { NavLink } from "react-router-dom";
 import "../App.css"
 import { useAuth } from "../context/AuthProvider";
+import HowTo from "./HowTo";
 
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-const PW_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%()]).{6,20}$/;
+const PW_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~]).{6,20}$/;
 
 const SignUp = () => {
     const { setAuth } = useAuth();
@@ -110,6 +111,9 @@ const SignUp = () => {
             {success ? (
                 <section className="success-form">
                     <h1>Success!</h1>
+                    <div className="how-to-auth">
+                        <HowTo/>
+                    </div>
                     <p>
                         <NavLink className="success-form-link" to="/dashboard"> Go to dashboard</NavLink>
                     </p>
@@ -218,7 +222,7 @@ const SignUp = () => {
                     <p id="pwnote" className={passwordFocus && !validPassword ? "instructions" : "offscreen"}>
                         6 to 20 characters. <br />
                         Must contain at least one lowercase, uppercase, number and symbol. <br />
-                        Allowed symbols: ! @ # $ % ( )
+                        Allowed symbols: !@#$%^&amp;*()_+{}[]:;&lt;&gt;,.?/~
                     </p>
                 </div>
                 

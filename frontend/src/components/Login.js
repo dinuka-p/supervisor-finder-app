@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../App.css"
 import { useAuth } from "../context/AuthProvider";
+import HowTo from "./HowTo";
 
 function Login() {
     const { setAuth } = useAuth();
@@ -69,6 +70,9 @@ function Login() {
             {success ? (
                 <section className="success-form">
                     <h1>You're logged in!</h1>
+                    <div className="how-to-auth">
+                        <HowTo/>
+                    </div>
                     <p>
                         <NavLink className="success-form-link" to="/dashboard"> Go to dashboard</NavLink>
                     </p>

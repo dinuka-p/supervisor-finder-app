@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import "../App.css"
 import { useAuth } from  '../context/AuthProvider'
+import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded';
+import HowToPopup from "./HowToPopup";
 
 function Dashboard() {
 
@@ -10,6 +12,7 @@ function Dashboard() {
   const [timeline, setTimeline] = useState(1); //which timeline picture to use
   const [deadline, setDeadline] = useState("-");
   const [countdown, setCountdown] = useState("-");
+  const [popup, setPopup] = useState(false);
 
   useEffect(() => {
     fetch("/api/get-dashboard-details").then(
@@ -42,8 +45,18 @@ function Dashboard() {
 }, [])
 
     return (
-        <div className="page-content">
-            <h1 className="page-title">Dashboard</h1>
+      <div className="page-content">
+        <div className="page-heading-container">
+          <h1 className="page-title">Dashboard</h1>
+            <button className="back-button"
+              onClick={() => setPopup(true)}> 
+                <HelpOutlineRoundedIcon/>
+            </button>
+        </div>
+        <HowToPopup trigger={popup} setTrigger={setPopup}/>
+
+
+            
               {!auth.accessToken && (
                 <h2>Please log in to view your dashboard</h2>)}
               {auth.accessToken && (
@@ -78,7 +91,7 @@ function Dashboard() {
                   )}
                 </div>
                 )}
-        </div>
+      </div>
     )
 }
 

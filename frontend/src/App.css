@@ -627,7 +627,7 @@
 .preferences-card {
   display:flex;
   margin: 15px 35px;
-  height: 450px;
+  min-height: 450px;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 10px;
@@ -992,4 +992,64 @@
 .h4-half-margin {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.popup-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-container {
+  position: relative;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 240px;
+  border-radius: 10px;
+  padding: 10px 15px;
+  width: 50%;
+}
+
+.popup-button {
+  color: #014254;
+  border: none;
+  display: flex;
+  justify-content: end;
+  padding: 0;
+}
+
+.popup-button:hover {
+  color: #5f9ea0;
+}
+
+.how-to-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.how-to-title {
+  margin-top: 0;
+}
+
+.how-to-text {
+  margin-top: 0;
+}
+
+.how-to-indented {
+  font-size: 0.9em;
+}
+
+.how-to-auth {
+  margin: 0 15px;
+  margin-top: 30px;
 }

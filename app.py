@@ -576,7 +576,7 @@ def update_deadlines():
         task.deadline = newDeadlines[i]
         i+= 1
     db.session.commit()
-    return jsonify({"response": newDeadlines})
+    return jsonify({"response": 200, "newDeadlines": newDeadlines})
 
 @app.route("/api/get-dashboard-details", methods=["GET"])
 def get_dashboard():

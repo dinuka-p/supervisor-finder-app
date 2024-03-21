@@ -12,14 +12,14 @@ import { useAuth } from  '../context/AuthProvider'
 
 const SidebarData = [
     {
-        title: "Supervisors",
-        icon: <SchoolRoundedIcon fontSize="large"/>, 
-        link: "/",
-    },
-    {
         title: "Dashboard",
         icon: <DashboardRoundedIcon fontSize="large"/>, 
         link: "/dashboard",
+    },
+    {
+        title: "Supervisors",
+        icon: <SchoolRoundedIcon fontSize="large"/>, 
+        link: "/",
     },
 ];
 
