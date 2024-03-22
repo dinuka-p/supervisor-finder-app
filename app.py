@@ -50,13 +50,9 @@ def allowedFile(filename):
 def user_loader(user_id):
     return Users.query.get(int(user_id))
 
-@app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def serve(path):
-    if path != "api":
-        return send_from_directory(app.static_folder, "index.html")
-    else:
-        return "", 204 
+    return send_from_directory(app.static_folder, "index.html")
 
 @app.route("/api/supervisor-profiles", methods=["GET"])
 def display_profiles():
