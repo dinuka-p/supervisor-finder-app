@@ -50,9 +50,13 @@ def allowedFile(filename):
 def user_loader(user_id):
     return Users.query.get(int(user_id))
 
-@app.route("/")
-def serve():
-    return send_from_directory(app.static_folder, "index.html")
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve(path):
+    if path != "api":
+        return send_from_directory(app.static_folder, "index.html")
+    else:
+        return "", 204 
 
 @app.route("/api/supervisor-profiles", methods=["GET"])
 def display_profiles():
@@ -75,6 +79,20 @@ def display_active_profiles():
 @app.route("/api/supervisor-filters", methods=["GET"]) 
 def display_filters():
     supervisors = Supervisors.query.all()
+    output = []
+    filter_list = []
+    for supervisor in supervisors:
+        unique_filters = supervisor.filterWords.split(",")
+        for filters in unique_filters:
+            filter_list.append(filters)
+    filter_list = list(set(filter_list))
+    for item in filter_list:
+        output.append(item)
+    return jsonify({"allFilters": output})
+
+@app.route("/api/active-supervisor-filters", methods=["GET"]) 
+def display_filters():
+    supervisors = ActiveSupervisors.query.all()
     output = []
     filter_list = []
     for supervisor in supervisors:
