@@ -1,6 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { useAuth } from "./context/AuthProvider";
 import Sidebar from './components/Sidebar';
 import SupervisorProfiles from "./components/SupervisorProfiles";
@@ -20,7 +19,7 @@ function App() {
 
   return (
 
-    <BrowserRouter>
+    <HashRouter>
       
       <div className="App">
         <Sidebar />
@@ -57,7 +56,7 @@ function App() {
         
       </div>
         
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
