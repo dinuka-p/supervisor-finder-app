@@ -1,21 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.95e1648a.css",
-    "main.js": "/static/js/main.81420a7d.js",
+    "main.css": "/static/css/main.d7f3f9b8.css",
+    "main.js": "/static/js/main.3d07cf1e.js",
     "static/js/453.d855a71b.chunk.js": "/static/js/453.d855a71b.chunk.js",
     "static/media/uob-logo.png": "/static/media/uob-logo.4620f39e36b39af6f8ad.png",
-    "static/media/submit-timeline.drawio.png": "/static/media/submit-timeline.drawio.fc798d11bb147a2748e3.png",
-    "static/media/wait-timeline.png": "/static/media/wait-timeline.18231a94e182c186a46d.png",
-    "static/media/find-timeline.png": "/static/media/find-timeline.c9c44f764a9b643c3811.png",
-    "static/media/profile-timeline.png": "/static/media/profile-timeline.e7fc4cc5e3c34cb52d4e.png",
     "static/media/default-profile.jpg": "/static/media/default-profile.80a247d45aa04bc0be83.jpg",
     "index.html": "/index.html",
-    "main.95e1648a.css.map": "/static/css/main.95e1648a.css.map",
-    "main.81420a7d.js.map": "/static/js/main.81420a7d.js.map",
+    "main.d7f3f9b8.css.map": "/static/css/main.d7f3f9b8.css.map",
+    "main.3d07cf1e.js.map": "/static/js/main.3d07cf1e.js.map",
     "453.d855a71b.chunk.js.map": "/static/js/453.d855a71b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.95e1648a.css",
-    "static/js/main.81420a7d.js"
+    "static/css/main.d7f3f9b8.css",
+    "static/js/main.3d07cf1e.js"
   ]
 }
