@@ -87,7 +87,8 @@ def display_filters():
     for supervisor in supervisors:
         unique_filters = supervisor.filterWords.split(",")
         for filters in unique_filters:
-            filter_list.append(filters)
+            if filters != "":
+                filter_list.append(filters)
     filter_list = list(set(filter_list))
     for item in filter_list:
         output.append(item)
@@ -101,7 +102,8 @@ def display_active_filters():
     for supervisor in supervisors:
         unique_filters = supervisor.filterWords.split(",")
         for filters in unique_filters:
-            filter_list.append(filters)
+            if filters != "":
+                filter_list.append(filters)
     filter_list = list(set(filter_list))
     for item in filter_list:
         output.append(item)

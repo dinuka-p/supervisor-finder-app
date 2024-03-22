@@ -49,6 +49,7 @@ function SupervisorProfiles() {
           ).then(
           data => {
               setAllFilters(data.allFilters)
+              console.log(data.allFilters)
           }
           )
     }
