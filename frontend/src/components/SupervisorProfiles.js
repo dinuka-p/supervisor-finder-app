@@ -89,27 +89,51 @@ function SupervisorProfiles() {
   };
 
   const handleDownloadClick = () => {
-    fetch("/api/download-supervisor-table")
-      .then((response) => {
-        if (response.ok) {
-          return response.blob();
-        } else {
-          throw new Error("Failed to download file");
-        }
-      })
-      .then((blob) => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        document.body.appendChild(a);
-        a.style = "display: none";
-        a.href = url;
-        a.download = "supervisors.xlsx"; // Specify the default filename
-        a.click();
-        window.URL.revokeObjectURL(url);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (!auth.accessToken) {
+      fetch("/api/download-supervisor-table")
+        .then((response) => {
+          if (response.ok) {
+            return response.blob();
+          } else {
+            throw new Error("Failed to download file");
+          }
+        })
+        .then((blob) => {
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          document.body.appendChild(a);
+          a.style = "display: none";
+          a.href = url;
+          a.download = "supervisors.xlsx"; // Specify the default filename
+          a.click();
+          window.URL.revokeObjectURL(url);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      } else {
+        fetch("/api/download-active-supervisor-table")
+          .then((response) => {
+            if (response.ok) {
+              return response.blob();
+            } else {
+              throw new Error("Failed to download file");
+            }
+          })
+          .then((blob) => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            document.body.appendChild(a);
+            a.style = "display: none";
+            a.href = url;
+            a.download = "supervisors.xlsx"; // Specify the default filename
+            a.click();
+            window.URL.revokeObjectURL(url);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
   };
   
 
