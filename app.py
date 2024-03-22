@@ -173,15 +173,15 @@ def download_supervisor_table():
         output,
         as_attachment=True,
         mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        download_name='supervisors.xlsx'
+        download_name='Supervisors.xlsx'
     )
     response.headers['Content-Disposition'] = 'attachment; filename="supervisors.xlsx"'
     return response
 
 @app.route("/api/download-active-supervisor-table")
 def download_active_supervisor_table():
-    query = ActiveSupervisors.query.with_entities(Supervisors.supervisorName, Supervisors.supervisorEmail, Supervisors.bio, Supervisors.projectExamples, Supervisors.filterWords, Supervisors.preferredContact, Supervisors.location).all()
-    data = [dict(zip(Supervisors.__table__.columns.keys()[1:], row)) for row in query]    
+    query = ActiveSupervisors.query.with_entities(ActiveSupervisors.supervisorName, ActiveSupervisors.supervisorEmail, ActiveSupervisors.bio, ActiveSupervisors.projectExamples, ActiveSupervisors.filterWords, ActiveSupervisors.preferredContact, ActiveSupervisors.location).all()
+    data = [dict(zip(ActiveSupervisors.__table__.columns.keys()[1:], row)) for row in query]    
     df = pd.DataFrame(data)
     output = BytesIO()
     df.to_excel(output, index=False, sheet_name='Supervisors')
@@ -190,7 +190,7 @@ def download_active_supervisor_table():
         output,
         as_attachment=True,
         mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        download_name='supervisors.xlsx'
+        download_name='Supervisors.xlsx'
     )
     response.headers['Content-Disposition'] = 'attachment; filename="supervisors.xlsx"'
     return response
