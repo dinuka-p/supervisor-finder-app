@@ -91,7 +91,7 @@ def display_filters():
     return jsonify({"allFilters": output})
 
 @app.route("/api/active-supervisor-filters", methods=["GET"]) 
-def display_filters():
+def display_active_filters():
     supervisors = ActiveSupervisors.query.all()
     output = []
     filter_list = []
