@@ -49,7 +49,6 @@ function SupervisorProfiles() {
           ).then(
           data => {
               setAllFilters(data.allFilters)
-              console.log(data.allFilters)
           }
           )
     }
@@ -89,7 +88,6 @@ function SupervisorProfiles() {
   };
 
   const handleDownloadClick = () => {
-    console.log("clicked", auth.accessToken)
     if (!auth.accessToken) {
       fetch("/api/download-supervisor-table")
         .then((response) => {

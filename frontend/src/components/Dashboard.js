@@ -48,37 +48,37 @@ function Dashboard() {
                 <HelpOutlineRoundedIcon/>
             </button>
         </div>
-        <HowToPopup trigger={popup} setTrigger={setPopup}/>
-
-
             
-              {!auth.accessToken && (
-                <h2>Please log in to view your dashboard</h2>)}
-              {auth.accessToken && (
-                <div className="dashboard-container">
-                  <div className="dashboard-card">
-                    <div className="dashboard-summary">
-                      <div className="dashboard-item">
-                        <h3>Current task:</h3>
-                        <p className="dashboard-text">{currentTask}</p>
-                      </div>
-                      <div className="dashboard-info-divider"> </div>
-                      <div className="dashboard-item">
-                        <h3>Deadline:</h3>
-                        <p className="dashboard-text">{deadline}</p>
-                      </div>
-                      <div className="dashboard-info-divider"> </div>
-                      <div className="dashboard-item">
-                        <h3>Countdown:</h3>
-                        <p className="dashboard-text">{countdown} days to go</p>
-                      </div>
-                    </div>
-                    <div className="dashboard-timeline-container">
-                      <Timeline/>
-                    </div>
-                  </div>
+        {!auth.accessToken && (
+          <h2>Please log in to view your dashboard</h2>)}
+        {auth.accessToken && (
+          <div className="dashboard-container">
+            <div className="dashboard-card">
+              <div className="dashboard-summary">
+                <div className="dashboard-item">
+                  <h3>Current task:</h3>
+                  <p className="dashboard-text">{currentTask}</p>
                 </div>
+                <div className="dashboard-info-divider"> </div>
+                <div className="dashboard-item">
+                  <h3>Deadline:</h3>
+                  <p className="dashboard-text">{deadline}</p>
+                </div>
+                <div className="dashboard-info-divider"> </div>
+                <div className="dashboard-item">
+                  <h3>Countdown:</h3>
+                  <p className="dashboard-text">{countdown} days to go</p>
+                </div>
+              </div>
+              <div className="dashboard-timeline-container">
+                <Timeline/>
+              </div>
+            </div>
+          </div>
                 )}
+              
+            
+          <HowToPopup trigger={popup} setTrigger={setPopup}/>
       </div>
     )
 }
