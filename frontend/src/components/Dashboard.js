@@ -54,6 +54,10 @@ function Dashboard() {
         {auth.accessToken && (
           <div className="dashboard-container">
             <div className="dashboard-card">
+
+              <div className="dashboard-subheading">
+                <h3>Next Deadline:</h3>
+              </div>
               <div className="dashboard-summary">
                 <div className="dashboard-item">
                   <h3>Current task:</h3>
@@ -69,6 +73,9 @@ function Dashboard() {
                   <h3>Countdown:</h3>
                   <p className="dashboard-text">{countdown} days to go</p>
                 </div>
+              </div>
+              <div className="dashboard-subheading">
+                <h3>Process Overview:</h3>
               </div>
               <div className="dashboard-timeline-container">
                 <Timeline/>

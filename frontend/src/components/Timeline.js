@@ -76,9 +76,9 @@ export default function Timeline() {
                 >
                 <StepLabel>
                     <Typography variant="body1" sx={{ fontSize: index === currentTask ? 20 : 18 , fontWeight: index === currentTask ? "bold" : "normal"  }}>
-                        {label}:
+                        {label}
                         <br />
-                        {deadlines[index].toLocaleDateString()}
+                        by {deadlines[index].toLocaleDateString()}
                     </Typography>
                 </StepLabel>
                 </Step>
