@@ -894,6 +894,7 @@
 
 .dashboard-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
@@ -948,6 +949,35 @@
   background-color: #014254;
   width: 2px;
   margin: 20px 10px;
+}
+
+.dashboard-progress-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin-top: 20px;
+}
+
+.dashboard-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.dashboard-progress-item {
+  margin-top: -10px;
+  font-size: large;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-progress-text {
+  margin-right: 7px;
+}
+
+.dashboard-progress-number {
+  margin-right: 5px;
 }
 
 .deadline-items-container {

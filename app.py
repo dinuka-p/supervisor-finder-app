@@ -651,5 +651,53 @@ def get_dashboard():
     
     return jsonify({"currentTask": currentTask, "deadline": formattedDate,  "countdown": countdown})
 
+
+@app.route("/api/get-student-progress/<userEmail>", methods=["GET"])
+def get_student_progress(userEmail):
+    step1 = False
+    step2 = False
+    step3 = False
+    user = Users.query.filter_by(userEmail=userEmail).first()
+    if user:
+        #has student completed their profile
+        if user.userBio is not None and user.userBio != "":
+            step1 = True
+
+        #has student added to favourites
+        if user.favourites is not None and user.favourites != "":
+            step2 = True
+
+        #has student submitted preferences
+        preferences = StudentPreferences.query.filter_by(userEmail=userEmail).first()
+        if preferences:
+            if (preferences.submittedPreferences is not None and preferences.submittedPreferences != "") or \
+               (preferences.codingLevel is not None and preferences.codingLevel != "") or \
+               (preferences.projects is not None and preferences.projects != ""):
+                step3 = True
+    return jsonify({"step1": step1, "step2": step2, "step3": step3})
+
+@app.route("/api/get-supervisor-progress/<userEmail>", methods=["GET"])
+def get_supervisor_progress(userEmail):
+    step1 = False
+    step2 = False
+    step3 = False
+    user = Users.query.filter_by(userEmail=userEmail).first()
+    supervisor = ActiveSupervisors.query.filter_by(supervisorEmail=userEmail).first()
+    if user:
+        #has student completed their profile
+        if supervisor.bio is not None and supervisor.bio != "":
+            step1 = True
+
+        #has student added to favourites
+        if user.favourites is not None and user.favourites != "":
+            step2 = True
+
+        #has student submitted preferences
+        preferences = SupervisorPreferences.query.filter_by(userEmail=userEmail).first()
+        if preferences:
+            if preferences.submittedPreferences is not None and preferences.submittedPreferences != "":
+                step3 = True
+    return jsonify({"step1": step1, "step2": step2, "step3": step3})
+
 if __name__ == "__main__":
     app.run()

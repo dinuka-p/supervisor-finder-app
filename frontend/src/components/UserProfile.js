@@ -19,6 +19,7 @@ function UserProfile() {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [submitStatus, setSubmitStatus] = useState("Submit");
   const [picture, setPicture] = useState(null);
+  const [aboutMe, setAboutMe] = useState("About me:");
 
 
   useEffect(() => {
@@ -62,7 +63,7 @@ function UserProfile() {
           setExamples(data.examples);
           setCapacity(data.capacity);
           setSelectedFilters(data.selectedFilters);
-
+          setAboutMe("Projects:");
         }
         )
 
@@ -150,7 +151,7 @@ function UserProfile() {
         {profileData && (
           <>
             <div className="edit-profile-container">
-              <h3>Edit Profile:</h3>
+              <h2>Edit Profile:</h2>
               <form className="edit-profile-form" encType="multipart/form-data">
                 <div className="edit-profile-uneditable">
                   <p>Name: {profileData.profileName}</p>
@@ -167,7 +168,7 @@ function UserProfile() {
               
                 <div className="edit-profile-flex">
                   <label className="edit-profile-label" htmlFor="bio">
-                        About me:
+                        {aboutMe}
                     </label>
                     <textarea
                         className="profile-bio-input" 
@@ -248,7 +249,7 @@ function UserProfile() {
 
                   <div className="edit-profile-flex">
                     <label className="edit-profile-label" htmlFor="examples">
-                          Project examples:
+                          Past project examples:
                       </label>
                       <textarea 
                           className="profile-bio-input" 

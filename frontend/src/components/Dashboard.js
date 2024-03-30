@@ -4,6 +4,8 @@ import { useAuth } from  '../context/AuthProvider'
 import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded';
 import HowToPopup from "./HowToPopup";
 import Timeline from "./Timeline";
+import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 function Dashboard() {
 
@@ -13,6 +15,15 @@ function Dashboard() {
   const [deadline, setDeadline] = useState("-");
   const [countdown, setCountdown] = useState("-");
   const [popup, setPopup] = useState(false);
+  const [group, setGroup] = useState("supervisors");
+  const [icon1, setIcon1] = useState(<DoneRoundedIcon/>);
+  const [icon2, setIcon2] = useState(<DoneRoundedIcon/>);
+  const [icon3, setIcon3] = useState(<DoneRoundedIcon/>);
+  const [icon4, setIcon4] = useState(<DoneRoundedIcon/>);
+  const [status1, setStatus1] = useState("");
+  const [status2, setStatus2] = useState("");
+  const [status3, setStatus3] = useState("");
+  const [status4, setStatus4] = useState(" not ");
 
   useEffect(() => {
     fetch("/api/get-dashboard-details").then(
@@ -37,6 +48,58 @@ function Dashboard() {
           setCountdown(data.countdown);
       }
       )
+      setIcon4(<CloseRoundedIcon/>);
+      setStatus4(" not ");
+      if (auth.role === "Supervisor") {
+        setGroup("students");
+        fetch(`/api/get-supervisor-progress/${auth.email}`, {
+          method: "GET",
+          headers: {
+              "Authorization": "Bearer " + auth.accessToken,
+          },
+        }).then(
+          res => res.json()
+          ).then(
+          data => { 
+            console.log(data);
+            if (data.step1 !== true) {
+              setStatus1(" not "); 
+              setIcon1(<CloseRoundedIcon/>);
+            }
+            if (data.step2 !== true) {
+              setStatus2(" not "); 
+              setIcon2(<CloseRoundedIcon/>);
+            }
+            if (data.step3 !== true) {
+              setStatus3(" not "); 
+              setIcon3(<CloseRoundedIcon/>);
+            }
+          })
+      } else {
+        fetch(`/api/get-student-progress/${auth.email}`, {
+          method: "GET",
+          headers: {
+              "Authorization": "Bearer " + auth.accessToken,
+          },
+        }).then(
+          res => res.json()
+          ).then(
+          data => { 
+            console.log(data);
+            if (data.step1 !== true) {
+              setStatus1(" not "); 
+              setIcon1(<CloseRoundedIcon/>);
+            }
+            if (data.step2 !== true) {
+              setStatus2(" not "); 
+              setIcon2(<CloseRoundedIcon/>);
+            }
+            if (data.step3 !== true) {
+              setStatus3(" not "); 
+              setIcon3(<CloseRoundedIcon/>);
+            }
+          })
+      }
 }, [])
 
     return (
@@ -79,6 +142,31 @@ function Dashboard() {
               </div>
               <div className="dashboard-timeline-container">
                 <Timeline/>
+              </div>
+            </div>
+            <div className="dashboard-progress-container">
+              <h2>Your Progress:</h2>
+              <div className="dashboard-progress">
+                <div className="dashboard-progress-item">
+                  <p className="dashboard-progress-number">1.</p>
+                  <p className="dashboard-progress-text">You have <strong>{status1}</strong> completed your profile</p>
+                  {icon1}
+                </div>
+                <div className="dashboard-progress-item">
+                  <p className="dashboard-progress-number">2.</p>
+                  <p className="dashboard-progress-text">You have <strong>{status2}</strong> added {group} to favourites</p>
+                  {icon2}
+                </div>
+                <div className="dashboard-progress-item">
+                  <p className="dashboard-progress-number">3.</p>
+                  <p className="dashboard-progress-text">You have <strong>{status3}</strong> submitted your preferences</p>
+                  {icon3}
+                </div>
+                <div className="dashboard-progress-item">
+                  <p className="dashboard-progress-number">4.</p>
+                  <p className="dashboard-progress-text">You have <strong>{status4}</strong> received your allocation</p>
+                  {icon4}
+                </div>
               </div>
             </div>
           </div>
