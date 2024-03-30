@@ -335,7 +335,6 @@ def display_students():
 @app.route("/api/student-details/<int:id>", methods=["GET"])
 def display_student_details(id):
     student = Users.query.get(id)
-    filter_list = []
     if student:
         student_data = {
             "id": student.userID,
@@ -347,6 +346,26 @@ def display_student_details(id):
         return jsonify({"student_info": student_data})
     else:
         return jsonify({"error": "Student not found"}), 404
+
+@app.route("/api/filter-students/<supervisorEmail>", methods=["GET"])
+def filter_students(supervisorEmail):
+    users = Users.query.all()
+    students = []
+
+    for user in users:
+        if user.userRole == "Student" and user.favourites:
+            favourites_list = user.favourites.split(",")
+            #check if supervisor's email in favorites list
+            if supervisorEmail in favourites_list:
+                students.append({
+                    "id": user.userID,
+                    "name": user.userName,
+                    "email": user.userEmail,
+                    "bio": user.userBio
+                })
+
+    return jsonify({"students": students})
+
     
 @app.route("/api/check-student-favourites/<studentEmail>/<supervisorEmail>", methods=["GET"])
 def check_student_favourites(studentEmail, supervisorEmail):

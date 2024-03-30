@@ -11,6 +11,8 @@ function StudentProfiles() {
   const [allStudents, setAllStudents] = useState([]);
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [filterActive, setFilterActive] = useState(false);
+
 
   useEffect(() => {
     if (auth.role === "Supervisor" || auth.role === "Lead") {
@@ -30,6 +32,27 @@ function StudentProfiles() {
     navigate(`/student/${selectedStudentID}`);
   };
   
+  const handleFilterClick = () => {
+    if (filterActive) {
+      setFilterActive(false);
+      fetch("/api/student-profiles")
+        .then((res) => res.json())
+        .then((data) => {
+          setAllStudents(data.students);
+        });
+    } else {
+      setFilterActive(true);
+      const supervisorEmail = auth.email;
+      fetch(`/api/filter-students/${supervisorEmail}`).then(
+        res => res.json()
+      ).then(
+        data => {
+          setAllStudents(data.students);
+        }
+      );
+    }
+  };
+
 
   return (
       <div className="page-content">
@@ -45,6 +68,20 @@ function StudentProfiles() {
                     onChange={(e) => {setSearchTerm(e.target.value);}}/>
           </div>
         </div>
+
+        {auth.role === "Supervisor"  && (
+          <div className="filter-container">
+            <p className="filter-by-text">Filter by:</p>
+            <div className="filter-buttons-div">
+                <button
+                  className={`filter-button ${filterActive ? "active" : "" }`}
+                  onClick={() => handleFilterClick()}>
+                  Interested in me 
+                </button>
+            </div>
+          </div>
+        )}
+        
 
 
         <motion.div layout className="supervisor-boxes">
