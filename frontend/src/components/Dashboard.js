@@ -61,7 +61,6 @@ function Dashboard() {
           res => res.json()
           ).then(
           data => { 
-            console.log(data);
             if (data.step1 !== true) {
               setStatus1(" not "); 
               setIcon1(<CloseRoundedIcon/>);
@@ -85,7 +84,6 @@ function Dashboard() {
           res => res.json()
           ).then(
           data => { 
-            console.log(data);
             if (data.step1 !== true) {
               setStatus1(" not "); 
               setIcon1(<CloseRoundedIcon/>);
