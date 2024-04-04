@@ -85,7 +85,10 @@ def display_filters():
     output = []
     filter_list = []
     for supervisor in supervisors:
-        unique_filters = supervisor.filterWords.split(",")
+        if supervisor.filterWords:
+            unique_filters = supervisor.filterWords.split(",")
+        else:
+            unique_filters = []
         for filters in unique_filters:
             if filters != "":
                 filter_list.append(filters)
@@ -100,7 +103,10 @@ def display_active_filters():
     output = []
     filter_list = []
     for supervisor in supervisors:
-        unique_filters = supervisor.filterWords.split(",")
+        if supervisor.filterWords:
+            unique_filters = supervisor.filterWords.split(",")
+        else:
+            unique_filters = []
         for filters in unique_filters:
             if filters != "":
                 filter_list.append(filters)
@@ -114,7 +120,10 @@ def display_supervisor_details(id):
     supervisor = Supervisors.query.get(id)
     filter_list = []
     if supervisor:
-        unique_filters = supervisor.filterWords.split(",")
+        if supervisor.filterWords:
+            unique_filters = supervisor.filterWords.split(",")
+        else:
+            unique_filters = []
         for filters in unique_filters:
             filter_list.append(filters)
         supervisor_data = {
@@ -139,7 +148,10 @@ def display_active_supervisor_details(id):
     supervisor = ActiveSupervisors.query.get(id)
     filter_list = []
     if supervisor:
-        unique_filters = supervisor.filterWords.split(",")
+        if supervisor.filterWords:
+            unique_filters = supervisor.filterWords.split(",")
+        else:
+            unique_filters = []
         for filters in unique_filters:
             filter_list.append(filters)
         user = Users.query.filter_by(userEmail=supervisor.supervisorEmail).first()
@@ -703,15 +715,15 @@ def get_supervisor_progress(userEmail):
     user = Users.query.filter_by(userEmail=userEmail).first()
     supervisor = ActiveSupervisors.query.filter_by(supervisorEmail=userEmail).first()
     if user:
-        #has student completed their profile
+        #has supervisor completed their profile
         if supervisor.bio is not None and supervisor.bio != "":
             step1 = True
 
-        #has student added to favourites
+        #has supervisor added to favourites
         if user.favourites is not None and user.favourites != "":
             step2 = True
 
-        #has student submitted preferences
+        #has supervisor submitted preferences
         preferences = SupervisorPreferences.query.filter_by(userEmail=userEmail).first()
         if preferences:
             if preferences.submittedPreferences is not None and preferences.submittedPreferences != "":
