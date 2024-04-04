@@ -7,10 +7,11 @@ import SpeakerNotesOutlinedIcon from '@mui/icons-material/SpeakerNotesOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import AddLinkRoundedIcon from '@mui/icons-material/AddLinkRounded';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
-import WorkHistoryOutlinedIcon from '@mui/icons-material/WorkHistoryOutlined';
+import WorkOutlineRoundedIcon from '@mui/icons-material/WorkOutlineRounded';
 import WestRoundedIcon from '@mui/icons-material/WestRounded';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import ChatBubbleOutlineRoundedIcon from '@mui/icons-material/ChatBubbleOutlineRounded';
 import { useAuth } from "../context/AuthProvider";
   
 
@@ -186,7 +187,14 @@ function SupervisorDetails() {
                         </div>
                     </div>
                     <div className="profile-card-data">
-                        <WorkHistoryOutlinedIcon/>
+                        <ChatBubbleOutlineRoundedIcon/>
+                        <div className="profile-card-text">
+                            <h4 className="profile-data-no-margin">Supervision Style:</h4>
+                            <p className="profile-data-no-margin">{supervisorData.style}</p>
+                        </div>
+                    </div>
+                    <div className="profile-card-data">
+                        <WorkOutlineRoundedIcon/>
                         <div className="profile-card-text">
                             <h4 className="profile-data-no-margin">Tags:</h4>
                             <div
@@ -194,7 +202,6 @@ function SupervisorDetails() {
                                 dangerouslySetInnerHTML={{ __html: supervisorData.filter_words.join('<br/>') }}
                             />
                         </div>
-                        <h4 className="profile-card-text"></h4>
                     </div>
                 </div>
             </div>

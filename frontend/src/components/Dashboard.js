@@ -6,6 +6,8 @@ import HowToPopup from "./HowToPopup";
 import Timeline from "./Timeline";
 import DoneRoundedIcon from '@mui/icons-material/DoneRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import AttachmentRoundedIcon from '@mui/icons-material/AttachmentRounded';
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
 
@@ -142,33 +144,63 @@ function Dashboard() {
                 <Timeline/>
               </div>
             </div>
-            <div className="dashboard-progress-container">
-              <h2>Your Progress:</h2>
-              <div className="dashboard-progress">
-                <div className="dashboard-progress-item">
-                  <p className="dashboard-progress-number">1.</p>
-                  <p className="dashboard-progress-text">You have <strong>{status1}</strong> completed your profile</p>
-                  {icon1}
-                </div>
-                <div className="dashboard-progress-item">
-                  <p className="dashboard-progress-number">2.</p>
-                  <p className="dashboard-progress-text">You have <strong>{status2}</strong> added {group} to favourites</p>
-                  {icon2}
-                </div>
-                <div className="dashboard-progress-item">
-                  <p className="dashboard-progress-number">3.</p>
-                  <p className="dashboard-progress-text">You have <strong>{status3}</strong> submitted your preferences</p>
-                  {icon3}
-                </div>
-                <div className="dashboard-progress-item">
-                  <p className="dashboard-progress-number">4.</p>
-                  <p className="dashboard-progress-text">You have <strong>{status4}</strong> received your allocation</p>
-                  {icon4}
+            <div className="dashboard-info">
+              <div className="dashboard-progress-container">
+                <h2>Your Progress:</h2>
+                <div className="dashboard-progress">
+                  <div className="dashboard-progress-item">
+                    <p className="dashboard-progress-number">1.</p>
+                    <p className="dashboard-progress-text">You have <strong>{status1}</strong> completed your profile</p>
+                    {icon1}
+                  </div>
+                  <div className="dashboard-progress-item">
+                    <p className="dashboard-progress-number">2.</p>
+                    <p className="dashboard-progress-text">You have <strong>{status2}</strong> added {group} to favourites</p>
+                    {icon2}
+                  </div>
+                  <div className="dashboard-progress-item">
+                    <p className="dashboard-progress-number">3.</p>
+                    <p className="dashboard-progress-text">You have <strong>{status3}</strong> submitted your preferences</p>
+                    {icon3}
+                  </div>
+                  <div className="dashboard-progress-item">
+                    <p className="dashboard-progress-number">4.</p>
+                    <p className="dashboard-progress-text">You have <strong>{status4}</strong> received your allocation</p>
+                    {icon4}
+                  </div>
                 </div>
               </div>
-            </div>
+              <div className="profile-info-divider"> </div>
+              <div className="dashboard-resources-container">
+                  <h2>Resources:</h2>
+                  <div className="profile-card-data">
+                      <AttachmentRoundedIcon/>
+                      <div className="profile-card-text">
+                        <Link to="https://canvas.bham.ac.uk/courses/73518/pages/general-project-ideas?module_item_id=3569071" target="_blank" rel="noopener noreferrer" className="link">
+                          General Project Ideas
+                        </Link>
+                      </div>
+                  </div>
+                  <div className="profile-card-data">
+                      <AttachmentRoundedIcon/>
+                      <div className="profile-card-text">
+                        <Link to="https://canvas.bham.ac.uk/courses/73518/pages/project-archive?module_item_id=3569072" target="_blank" rel="noopener noreferrer" className="link">
+                          Project Archive
+                        </Link>
+                      </div>
+                  </div>
+                  <div className="profile-card-data">
+                      <AttachmentRoundedIcon/>
+                      <div className="profile-card-text">
+                        <Link to="http://dl.acm.org/" target="_blank" rel="noopener noreferrer" className="link">
+                          ACM Digital Library
+                        </Link>
+                      </div>
+                  </div>
+                </div>
           </div>
-                )}
+          </div>
+          )}
               
             
           <HowToPopup trigger={popup} setTrigger={setPopup}/>

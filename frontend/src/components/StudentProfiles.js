@@ -15,7 +15,7 @@ function StudentProfiles() {
 
 
   useEffect(() => {
-    if (auth.role === "Supervisor" || auth.role === "Lead") {
+    if (auth.role === "Supervisor" || auth.role === "Lead" || auth.role === "Marker") {
         fetch("/api/student-profiles").then(
         res => res.json()
         ).then(

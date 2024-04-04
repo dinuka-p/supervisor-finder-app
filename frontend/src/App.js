@@ -39,11 +39,19 @@ function App() {
             </>
           )}
 
-        {auth.role === "Lead" && (
+          {auth.role === "Lead" && (
             <>
               <Route path="/students" element={<StudentProfiles />} />
               <Route path="/student/:id" element={<StudentDetails />} />
               <Route path="/admin" element={<Admin />} />
+            </>
+          )}
+
+          {auth.role === "Marker" && (
+            <>
+              <Route path="/students" element={<StudentProfiles />} />
+              <Route path="/student/:id" element={<StudentDetails />} />
+              <Route path="/preferences" element={<Preferences />} />
             </>
           )}
           

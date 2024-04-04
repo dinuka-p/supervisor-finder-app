@@ -18,6 +18,16 @@ function Preferences() {
     const [codingLevel, setCodingLevel] = useState("");
 
     useEffect(() => {
+    if (auth.role === "Marker") {
+        const userEmail = "dsp068@student.bham.ac.uk";
+        fetch(`/api/get-favourites/${userEmail}`).then(
+            res => res.json()
+        ).then(
+            data => {
+                setFavourites(data.favourites);
+            }
+        )
+    } else {
         const userEmail = auth.email;
         fetch(`/api/get-favourites/${userEmail}`).then(
             res => res.json()
@@ -29,27 +39,43 @@ function Preferences() {
         if (auth.role === "Supervisor") {
             setGroup("students");
         }
+    }
+        
     }, [])
 
     //load existing preferred list
     useEffect(() => {
-        const userEmail = auth.email;
-        fetch(`/api/get-preferences/${userEmail}`).then(
-            res => res.json()
-            ).then(
-            data => {
-                setPreferred(data.preferences);
-                localStorage.setItem("preferred", JSON.stringify(data.preferences));
-                if (data.role === "Student") {
-                    setSelectedFilters(data.projects)
-                    setCodingLevel(data.coding)
+        if (auth.role === "Marker") {
+            const userEmail = "dsp068@student.bham.ac.uk";
+            fetch(`/api/get-preferences/${userEmail}`).then(
+                res => res.json()
+                ).then(
+                data => {
+                    setPreferred(data.preferences);
+                    localStorage.setItem("preferred", JSON.stringify(data.preferences));
+                    if (data.role === "Student") {
+                        setSelectedFilters(data.projects)
+                        setCodingLevel(data.coding)
+                    }
+                })
+        } else {
+            const userEmail = auth.email;
+            fetch(`/api/get-preferences/${userEmail}`).then(
+                res => res.json()
+                ).then(
+                data => {
+                    setPreferred(data.preferences);
+                    localStorage.setItem("preferred", JSON.stringify(data.preferences));
+                    if (data.role === "Student") {
+                        setSelectedFilters(data.projects)
+                        setCodingLevel(data.coding)
+                    }
                 }
+                )
+            if (auth.role === "Supervisor") {
+                setPreferenceLimit(5);
             }
-            )
-        if (auth.role === "Supervisor") {
-            setPreferenceLimit(5);
         }
-    
     }, [])
 
     useEffect(() => {
@@ -132,10 +158,15 @@ function Preferences() {
     return (
         <div className="page-content">
             <h1 className="page-title">Preferences</h1>
+            {auth.role === "Marker" && (
+            <div className="supervisor-demo">
+                Note! This is an example student preference form. The submit button has been disabled.
+            </div>
+            )}
             <p className="page-instructions">Mark {group} as a favourite by clicking the 'Favourite' button on their profiles. Favourited {group} will be displayed in the 'Your Favourites' list. 
             When you're ready, add {group} to the 'Submit Preferences' list in the order of your preference before submitting.</p>
 
-            {auth.role === "Student" && (
+            {auth.role !== "Supervisor" && (
                 <p className="page-instructions">
                     Submit your top 1-2 supervisors. Only add a third supervisor if you're happy to be matched with them! 
                     In case we can't match you with your top choices, we'll use the provided project and programming information to find a suitable match for you.
@@ -182,7 +213,7 @@ function Preferences() {
                         
                         </div>
                     )} 
-                    {auth.role === "Student" && (
+                    {auth.role !== "Supervisor" && (
                         <div className="preferences-info-student">
                             <h3 className="profile-data-no-margin">Submit Preferences:</h3>
                             <div className="preference-choices-container">
@@ -268,12 +299,20 @@ function Preferences() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="div-centered">
-                                    <button className="preferences-submit-button" onClick={handleSubmit}>
-                                        {submitStatus}
-                                    </button>
-                                </div>
-                                
+                                {auth.role !== "Marker" && (
+                                    <div className="div-centered">
+                                        <button className="preferences-submit-button" onClick={handleSubmit}>
+                                            {submitStatus}
+                                        </button>
+                                    </div>
+                                )}
+                                {auth.role === "Marker" && (
+                                    <div className="div-centered">
+                                        <button className="preferences-submit-button-marker" >
+                                            Submit
+                                        </button>
+                                    </div>
+                                )}
                                 
                             </div>
                         

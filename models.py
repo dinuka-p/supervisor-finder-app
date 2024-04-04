@@ -33,6 +33,7 @@ class ActiveSupervisors(db.Model):
     projectExamples = db.Column(db.Text)
     filterWords = db.Column(db.Text)
     capacity = db.Column(db.Integer) 
+    supervisionStyle = db.Column(db.Text)
     def __repr__(self):
         return "<Name %r>" %self.supervisorName
     

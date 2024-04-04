@@ -478,6 +478,7 @@
 
 .profile-projects {
   width: 60%;
+  margin-right: 20px;
 }
 
 .profile-info-divider {
@@ -488,9 +489,9 @@
 
 .profile-supervision {
   display:grid;
-  width: 38%;
-  margin-left: 10px;
-  justify-content: center;
+  width: 30%;
+  margin-left: 60px;
+  justify-content: baseline;
 }
 
 .profile-data-no-margin {
@@ -740,6 +741,23 @@
   cursor: pointer;
 }
 
+.preferences-submit-button-marker {
+  background-color: #a5b0b0;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  color: #f1f1f1;
+  font-weight: 500;
+  font-size: medium;
+  padding: 10px;
+  width: 110px;
+  margin-top: 20px;
+}
+
+
 .preferences-submit-button:hover {
   font-weight: 600;
 }
@@ -954,9 +972,18 @@
 .dashboard-progress-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 80%;
-  margin-top: 20px;
+  align-items: baseline;
+  width: 50%;
+  margin-left: 50px;
+}
+
+
+.dashboard-resources-container {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 45%;
+  margin-left: 65px;
 }
 
 .dashboard-progress {
@@ -978,6 +1005,21 @@
 
 .dashboard-progress-number {
   margin-right: 5px;
+}
+
+.dashboard-info {
+  display: flex;
+  margin-left: 30px;
+  margin-top: 10px;
+  padding: 20px;
+  text-align: left;
+  width: 90%;
+}
+
+.dashboard-data-no-margin {
+  margin-bottom: 0px;
+  margin-top: 5px;
+  font-size: large;
 }
 
 .deadline-items-container {
@@ -1132,4 +1174,14 @@
   padding-top: 25px;
   background-color: #ffffff;
   border-radius: 10px;
+}
+
+.link {
+  font-size: large;
+  color: #014254;
+}
+
+.link:visited {
+  text-decoration: none;
+  color: inherit
 }
