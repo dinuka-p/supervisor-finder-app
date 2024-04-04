@@ -46,6 +46,7 @@ class Users(UserMixin, db.Model):
     userBio = db.Column(db.Text)
     favourites = db.Column(db.Text)
     userPhoto = db.Column(db.String(255))
+    course = db.Column(db.Integer) 
 
     def get_id(self):
         return str(self.userID)
