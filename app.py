@@ -137,6 +137,7 @@ def display_supervisor_details(id):
             "location": supervisor.location,
             "officeHours": "",
             "capacity": "X",
+            "style": "In-person meetings every two weeks",
             "bookingLink": ""
         }
         return jsonify({"supervisor_info": supervisor_data})
