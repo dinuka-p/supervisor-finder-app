@@ -59,6 +59,12 @@ function Admin() {
         <div className="page-content">
             <h1 className="page-title">Admin Page</h1>
               {auth.accessToken && (
+                <>
+                {auth.role === "Marker" && (
+                    <div className="supervisor-demo">
+                        Note! This is a read-only view of the admin page. The submit button has been disabled.
+                    </div>
+                )}  
                 <div className="edit-profile-container">
                     <h3>Add Deadlines:</h3> 
                     <div className="deadline-items-container">
@@ -115,15 +121,24 @@ function Admin() {
                                         }} />
                         </div>
                     </div>
+                    {auth.role !== "Marker" && (
+                        <div className="deadline-submit-container">
+                            <button className={`deadline-submit-button${!allDatesFilled ? " disabled" : " active"}`}
+                                    onClick={handleSubmit}
+                                    disabled={!allDatesFilled}
+                                >
+                                    {submitStatus}</button>
+                        </div>
+                    )}
+                    {auth.role === "Marker" && (
                     <div className="deadline-submit-container">
-                        <button className={`deadline-submit-button${!allDatesFilled ? " disabled" : " active"}`}
-                                onClick={handleSubmit}
-                                disabled={!allDatesFilled}
-                            >
-                                {submitStatus}</button>
+                        <button className="deadline-submit-button-marker" >
+                            Update deadlines
+                        </button>
                     </div>
+                )}
                 </div>
-                
+                </>
                 )}
         </div>
     )

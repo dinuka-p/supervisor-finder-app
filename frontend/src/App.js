@@ -52,6 +52,7 @@ function App() {
               <Route path="/students" element={<StudentProfiles />} />
               <Route path="/student/:id" element={<StudentDetails />} />
               <Route path="/preferences" element={<Preferences />} />
+              <Route path="/admin" element={<Admin />} />
             </>
           )}
           

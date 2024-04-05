@@ -42,6 +42,34 @@ function UserProfile() {
         )
     }
 
+    if (auth.role === "Marker") {
+      fetch(`/api/user-profile/${auth.email}`, {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + auth.accessToken,
+        },
+      }).then(
+        res => res.json()
+        ).then(
+        data => {
+          setProfileData(({
+            profileName: data.name,
+            profileEmail: data.email}));
+          setBio("");
+          setBio("Topics of interest to supervise");
+          setLocation("Birmingham/Dubai or office number");
+          setContact("Email/zoom/in person");
+          setOfficeHours("Office hour date and times");
+          setBooking("Link to book meetings");
+          setExamples("Example projects from previous years");
+          setCapacity(3);
+          setSelectedFilters("Computing and Communication Systems");
+          setAboutMe("Projects:");
+            
+        }
+        )
+    }
+
     if (auth.role === "Supervisor") {
       fetch(`/api/supervisor-profile/${auth.email}`, {
         method: "GET",
@@ -150,6 +178,11 @@ function UserProfile() {
             <h2>Please log in to view your profile</h2>)}
         {profileData && (
           <>
+            {auth.role === "Marker" && (
+            <div className="supervisor-demo">
+                Note! This is an example supervisor profile page. The submit button has been disabled.
+            </div>
+            )}
             <div className="edit-profile-container">
               <h2>Edit Profile:</h2>
               <form className="edit-profile-form" encType="multipart/form-data">
@@ -182,7 +215,7 @@ function UserProfile() {
                     />
                 </div>
 
-                {auth.role === "Supervisor" && (
+                {(auth.role === "Supervisor" || auth.role === "Marker") && (
                   <>
                   <div className="edit-profile-flex">
                     <label className="edit-profile-label" htmlFor="location">
@@ -301,9 +334,18 @@ function UserProfile() {
                   </div>
                   </>
                 )}
-                <div className="edit-profile-submit">
-                  <button className="preferences-submit-button" onClick={handleSubmit}>{submitStatus}</button>
-                </div>
+                {auth.role !== "Marker" && (
+                  <div className="edit-profile-submit">
+                    <button className="preferences-submit-button" onClick={handleSubmit}>{submitStatus}</button>
+                  </div>
+                )}
+                {auth.role === "Marker" && (
+                    <div className="edit-profile-submit">
+                        <button className="preferences-submit-button-marker" >
+                            Submit
+                        </button>
+                    </div>
+                )}
               </form>
               
             </div>

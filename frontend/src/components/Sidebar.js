@@ -40,16 +40,6 @@ function Sidebar() {
 
     let extraTabs = [];
 
-    if (auth.role !== "Lead" || auth.role !== "Marker") {
-        //no profile tab for module leads
-        extraTabs = [
-            {
-                title: "Profile",
-                icon: <AssignmentIndRoundedIcon fontSize="large"/>, 
-                link: "/your-profile",
-            },
-        ];
-    } 
 
     if (auth.role === "Supervisor") {
         //extra tabs for supervisors
@@ -107,9 +97,19 @@ function Sidebar() {
                 link: "/students",
             },
             {
+                title: "Profile",
+                icon: <AssignmentIndRoundedIcon fontSize="large"/>, 
+                link: "/your-profile",
+            },
+            {
                 title: "Preferences",
                 icon: <FavoriteRoundedIcon fontSize="large" />,
                 link: "/preferences",
+            },
+            {
+                title: "Admin",
+                icon: <ManageAccountsRoundedIcon fontSize="large" />,
+                link: "/admin",
             },
         ];
     }

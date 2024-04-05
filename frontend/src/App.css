@@ -74,7 +74,7 @@
 }
 
 .sidebar-nav:hover {
-  color:cadetblue ;
+  color:#5fb5b8 ;
 }
 
 .sidebar-nav-div {
@@ -106,7 +106,7 @@
 
 .auth-button {
   margin: 0px 10px;
-  background-color: cadetblue;
+  background-color: #007a80;
   border: none;
   color: #ffffff;
   border-radius: 10px;
@@ -165,7 +165,7 @@
 }
 
 .logout-button:hover {
-  color: cadetblue;
+  color: #5fb5b8;
   font-weight: 600;
 }
 
@@ -197,7 +197,7 @@
 
 .supervisor-demo {
   margin-bottom: 15px;
-  background-color: cadetblue;
+  background-color: #007a80;
   color: #f1f1f1;
   height: 30px;
   display: flex;
@@ -274,7 +274,7 @@
 }
 
 .filter-button:hover {
-  color:cadetblue ;
+  color: #007a80;
 }
 
 .filter-button.active {
@@ -301,7 +301,7 @@
 }
 
 .supervisor-summary:hover {
-  background-color: cadetblue;
+  background-color: #007a80;
   color: #ffffff;
 }
 
@@ -316,7 +316,7 @@
 }
 
 .student-summary:hover {
-  background-color: cadetblue;
+  background-color: #007a80;
   color: #ffffff;
 }
 
@@ -363,7 +363,7 @@
 }
 
 .back-button:hover {
-  color:cadetblue ;
+  color:#007a80;
   cursor: pointer;
 }
 
@@ -427,7 +427,7 @@
 
 .profile-fav-button {
   margin-right: 10px;
-  background-color: cadetblue;
+  background-color: #007a80;
   border-radius: 10px;
   border: none;
   display: flex;
@@ -514,7 +514,7 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: 1rem;
-  background-color: cadetblue;
+  background-color: #007a80;
   color: #f1f1f1;
   border-radius: 10px;
   font-size: large;
@@ -528,7 +528,7 @@
   flex-direction: column;
   justify-content: flex-start;
   padding: 1rem;
-  background-color: cadetblue;
+  background-color: #007a80;
   color: #f1f1f1;
   border-radius: 10px;
   font-size: large;
@@ -566,6 +566,11 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+.auth-form-link {
+  color: #f1f1f1;
+}
+
 .success-form {
   display: flex;
   flex-direction: column;
@@ -635,8 +640,7 @@
 }
 
 .auth-submit:hover {
-  color: #014254;
-  background-color: #f1f1f1;
+  color: #5fb5b8;
 }
 
 .preferences-card {
@@ -718,14 +722,14 @@
 
 .preferred-list-option {
   margin-top: 5px;
-  border: 1px solid cadetblue;
+  border: 1px solid #007a80;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
 }
 
 .preferences-submit-button {
-  background-color: #5f9ea0;
+  background-color: #007a80;
   border-radius: 10px;
   border: none;
   display: flex;
@@ -1064,7 +1068,23 @@
 }
 
 .deadline-submit-button, .deadline-submit-button.active {
-  background-color: cadetblue;
+  background-color: #007a80;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  color: #f1f1f1;
+  font-weight: 500;
+  font-size: medium;
+  padding: 10px;
+  width: 300px;
+  margin-top: 20px;
+}
+
+.deadline-submit-button-marker {
+  background-color: #a5b0b0;
   border-radius: 10px;
   border: none;
   display: flex;
@@ -1144,7 +1164,7 @@
 }
 
 .popup-button:hover {
-  color: #5f9ea0;
+  color: #007a80;
 }
 
 .how-to-container {

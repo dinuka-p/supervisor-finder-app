@@ -6,7 +6,7 @@ Welcome to UoB Supervisor Finder! This website was designed to be used by the Un
 
 This project was deployed using Heroku and will be live until the end of May. To view the website, please click on this link: [UoB Supervisor Finder](https://uob-supervisor-finder-e2e8d00717a3.herokuapp.com/) 
 
-You can log in as a marker using the following credentials. This will allow you to view the dashboard, supervisor and students profiles and a read-only preview of the student preferences submission page.
+On the platform, users can log in as students, supervisors or module leads. By design, some features in the platform are accessible only to certain roles. For the purposes of marking this Final Year Project, a single user has been created in the database with the role of "Marker". This role grants read-only access to all pages on the website. To log in as a Marker, please use the following credentials. 
 
 Email: **marker@uob.com**
 
