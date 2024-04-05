@@ -40,6 +40,16 @@ function Sidebar() {
 
     let extraTabs = [];
 
+    if (auth.role !== "Lead") {
+        //display profile tab for unauthenticated users
+        extraTabs = [
+            {
+                title: "Profile",
+                icon: <AssignmentIndRoundedIcon fontSize="large"/>, 
+                link: "/your-profile",
+            },
+        ];
+    } 
 
     if (auth.role === "Supervisor") {
         //extra tabs for supervisors
