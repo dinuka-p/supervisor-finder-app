@@ -187,8 +187,8 @@ function UserProfile() {
               <h2>Edit Profile:</h2>
               <form className="edit-profile-form" encType="multipart/form-data">
                 <div className="edit-profile-uneditable">
-                  <p>Name: {profileData.profileName}</p>
-                  <p>Email: {profileData.profileEmail}</p>
+                  <p style={{ marginTop: "5px" }}>Name: {profileData.profileName}</p>
+                  <p style={{ marginTop: "5px" }}>Email: {profileData.profileEmail}</p>
                   {/* <input className="edit-profile-image"
                       type="file"
                       id="picture" 
@@ -283,6 +283,23 @@ function UserProfile() {
                   <div className="edit-profile-flex">
                     <label className="edit-profile-label" htmlFor="examples">
                           Past project examples:
+                      </label>
+                      <textarea 
+                          className="profile-bio-input" 
+                          type="text"
+                          id = "examples"
+                          autoComplete="off"
+                          value={examples}
+                          onChange={(e) => {
+                            setExamples(e.target.value);
+                            handleFormUpdate();
+                          }}
+                      />
+                  </div>
+
+                  <div className="edit-profile-flex">
+                    <label className="edit-profile-label" htmlFor="examples">
+                          Supervision style:
                       </label>
                       <textarea 
                           className="profile-bio-input" 
