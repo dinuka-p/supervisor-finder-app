@@ -146,7 +146,7 @@ function Dashboard() {
             </div>
             <div className="dashboard-info">
               <div className="dashboard-progress-container">
-                <h2>Your Progress:</h2>
+                <h2 style={{ marginTop: "0px" }}>Your Progress:</h2>
                 <div className="dashboard-progress">
                   <div className="dashboard-progress-item">
                     <p className="dashboard-progress-number">1.</p>
@@ -172,7 +172,7 @@ function Dashboard() {
               </div>
               <div className="profile-info-divider"> </div>
               <div className="dashboard-resources-container">
-                  <h2>Resources:</h2>
+                  <h2 style={{ marginTop: "0px" }}>Resources:</h2>
                   <div className="profile-card-data">
                       <AttachmentRoundedIcon/>
                       <div className="profile-card-text">
