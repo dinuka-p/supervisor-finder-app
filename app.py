@@ -223,12 +223,13 @@ def register_user():
     else:
         password = request_data["password"]
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
-
+        course = 26581
         #all users added to user table (for password storing)
         newUser = Users(userEmail=email,
                         userPassword=hashed_password,
                         userRole=role,
-                        userName=name)
+                        userName=name,
+                        course=course)
         db.session.add(newUser)
         db.session.commit()
 
@@ -490,12 +491,15 @@ def get_favourites(userEmail):
     user = Users.query.filter_by(userEmail=userEmail).first()
     favourites_list = []
     if user:
+        #favourites stores as string, so if not null split string into list of users
         if user.favourites:
             unique_favourites = user.favourites.split(",")
         else:
+            #no favourites chosen yet
             unique_favourites = []
         for favourites in unique_favourites:
             user = Users.query.filter_by(userEmail=favourites).first()
+            #get the favourited user's name and email and append to list to send to frontend
             favourite_details = {"name": user.userName, "email": user.userEmail}
             favourites_list.append(favourite_details)
         return jsonify({"favourites": favourites_list})
@@ -571,6 +575,7 @@ def edit_profile():
     file = request.files.get("picture")
 
     cursor = db.session.connection()
+
     if file and allowedFile(file.filename):
         filename = email + "." + secure_filename(file.filename)
         file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
@@ -663,9 +668,10 @@ def get_dashboard():
         if task.deadline is None:
             return jsonify({"currentTask": currentTask, "deadline": formattedDate,  "countdown": countdown})
         if task.deadline > now:
+            #all deadlines that have not passed yet are added to the dates list
             dates.append(task.deadline)
 
-    if len(dates) > 0:
+    if len(dates) > 0: #work out what the next deadline is
         nextDeadline = min(dates, key=lambda x: x - now)
         currentTask = Deadlines.query.filter_by(deadline=nextDeadline).first().taskID
         formattedDate = nextDeadline.strftime('%-d %B')
@@ -674,13 +680,14 @@ def get_dashboard():
         currentTask = 4
         query = Deadlines.query.filter_by(taskID=currentTask).first()
         if query:
+            #if all deadlines have passed, set the current task to "wait for allocation"
             nextDeadline = query.deadline
             formattedDate = nextDeadline.strftime('%-d %B')
             countdown = (nextDeadline - now).days
             countdown = max(countdown, 0)
         else:
+            #if no deadlines have been set, set the current task to "complete your profile"
             currentTask = 1
-    
     return jsonify({"currentTask": currentTask, "deadline": formattedDate,  "countdown": countdown})
 
 

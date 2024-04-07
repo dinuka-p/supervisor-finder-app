@@ -358,7 +358,7 @@ function UserProfile() {
                 )}
                 {auth.role === "Marker" && (
                     <div className="edit-profile-submit">
-                        <button className="preferences-submit-button-marker" >
+                        <button className="preferences-submit-button-marker" tabIndex={-1}>
                             Submit
                         </button>
                     </div>

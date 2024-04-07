@@ -187,7 +187,17 @@ function SupervisorProfiles() {
                 }
             }
           ).map((supervisor) => (
-            <motion.div layout key={supervisor.id} className="supervisor-summary" onClick={() => handleSupervisorClick(supervisor.id)}>
+            <motion.div 
+                  layout key={supervisor.id} 
+                  className="supervisor-summary" 
+                  tabIndex={0} 
+                  onClick={() => handleSupervisorClick(supervisor.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      handleSupervisorClick(supervisor.id);
+                    }
+                  }}
+                  >
               <h4 className="supervisor-name">{supervisor.name}</h4>
               <p className="supervisor-email">{supervisor.email}</p>
               <p className="supervisor-projects">{supervisor.projects}</p>

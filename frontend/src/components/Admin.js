@@ -132,7 +132,7 @@ function Admin() {
                     )}
                     {auth.role === "Marker" && (
                     <div className="deadline-submit-container">
-                        <button className="deadline-submit-button-marker" >
+                        <button className="deadline-submit-button-marker" tabIndex={-1}>
                             Update deadlines
                         </button>
                     </div>

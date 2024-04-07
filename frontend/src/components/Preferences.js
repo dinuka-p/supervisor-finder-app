@@ -179,7 +179,16 @@ function Preferences() {
                         <h3 className="profile-data-no-margin">Your Favourites:</h3>
                         <ul className="favourites-list">
                             {favourites.map((favourite, index) => (
-                                <li className="favourites-list-option" key={index} onClick={() => handlePreference(favourite)}>
+                                <li className="favourites-list-option" 
+                                    key={index} 
+                                    tabIndex={0} 
+                                    onClick={() => handlePreference(favourite)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                            handlePreference(favourite);
+                                        }
+                                    }}
+                                    >
                                     {preferred.includes(favourite.email) ? <RemoveRoundedIcon fontSize="small" /> : <AddRoundedIcon fontSize="small" />}
                                     <p className="favourites-list-option-name">{favourite.name}</p>
                                 </li>
@@ -203,8 +212,19 @@ function Preferences() {
                                     </div>
                                     <ul className="preferred-list">
                                         {preferred.map((choice, index) => (
-                                            <li className="preferred-list-option" key={index}>{choice.name}</li>
-                                        ))}
+                                                    <li className="preferred-list-option" 
+                                                        key={index}
+                                                        tabIndex={0}
+                                                        onClick={() => handlePreference(choice)}
+                                                        onKeyDown={(e) => {
+                                                            if (e.key === 'Enter') {
+                                                                handlePreference(choice);
+                                                            }
+                                                        }}
+                                                        >
+                                                        {choice.name}
+                                                    </li>
+                                                ))}
                                     </ul>
                                 </div>
                                 <button className="preferences-submit-button" onClick={handleSubmit}>{submitStatus}</button>
@@ -230,7 +250,14 @@ function Preferences() {
                                                 {preferred.map((choice, index) => (
                                                     <li className="preferred-list-option" 
                                                         key={index}
-                                                        onClick={() => handlePreference(choice)}>
+                                                        tabIndex={0}
+                                                        onClick={() => handlePreference(choice)}
+                                                        onKeyDown={(e) => {
+                                                            if (e.key === 'Enter') {
+                                                                handlePreference(choice);
+                                                            }
+                                                        }}
+                                                        >
                                                         {choice.name}
                                                     </li>
                                                 ))}
@@ -242,6 +269,7 @@ function Preferences() {
                                                 <input type="radio" 
                                                     name="coding-level" 
                                                     value="no code" 
+                                                    tabIndex={0}
                                                     checked={codingLevel === "no code"}
                                                     onChange={(e) => {
                                                         setCodingLevel(e.target.value);
@@ -266,6 +294,7 @@ function Preferences() {
                                                 <input type="radio" 
                                                     name="coding-level" 
                                                     value="all code" 
+                                                    tabIndex={0}
                                                     checked={codingLevel === "all code"}
                                                     onChange={(e) => {
                                                         setCodingLevel(e.target.value);
