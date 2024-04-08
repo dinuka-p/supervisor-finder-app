@@ -125,7 +125,7 @@ const SignUp = () => {
                 <form className="auth-form" onSubmit={handleSubmit}>
                 <div className="auth-label-input">
                     <label className="auth-label" htmlFor="name">
-                        *Name:
+                        *Full Name:
                     </label>
                     <input 
                         className="auth-input" 
@@ -138,7 +138,7 @@ const SignUp = () => {
                 </div>
                 <div className="auth-label-input">
                     <label className="auth-label" htmlFor="email">
-                        *Email:
+                        *Univeristy Email:
                         <span className={validEmail ? "valid" : "hide"}>
                             <DoneRoundedIcon/>
                         </span>
