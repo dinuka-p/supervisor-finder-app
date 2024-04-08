@@ -252,7 +252,8 @@ def register_user():
                             bio= "", 
                             projectExamples= "", 
                             filterWords= "", 
-                            capacity= 0)
+                            capacity= 0,
+                            supervisionStyle="")
             db.session.add(activeSupervisor)
             db.session.add(newPreferenceUser)
             db.session.commit()
@@ -570,6 +571,7 @@ def edit_profile():
     booking = request.form.get("booking")
     examples = request.form.get("examples")
     capacity = request.form.get("capacity")
+    style = request.form.get("style")
     selectedFilters = request.form.getlist("selectedFilters")
 
     file = request.files.get("picture")
@@ -604,6 +606,7 @@ def edit_profile():
             filterWords = ', '.join(selectedFilters)
             supervisor.filterWords = filterWords
             supervisor.capacity = capacity
+            supervisor.supervisionStyle = style
             db.session.commit()
 
     cursor.close()

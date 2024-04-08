@@ -14,6 +14,7 @@ function UserProfile() {
   const [booking, setBooking] = useState("");
   const [examples, setExamples] = useState("");
   const [capacity, setCapacity] = useState(0);
+  const [style, setStyle] = useState("");
 
   const [allFilters, setAllFilters] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -43,31 +44,20 @@ function UserProfile() {
     }
 
     if (auth.role === "Marker") {
-      fetch(`/api/user-profile/${auth.email}`, {
-        method: "GET",
-        headers: {
-            "Authorization": "Bearer " + auth.accessToken,
-        },
-      }).then(
-        res => res.json()
-        ).then(
-        data => {
-          setProfileData(({
-            profileName: data.name,
-            profileEmail: data.email}));
-          setBio("");
-          setBio("Topics of interest to supervise");
-          setLocation("Birmingham/Dubai or office number");
-          setContact("Email/zoom/in person");
-          setOfficeHours("Office hour date and times");
-          setBooking("Link to book meetings");
-          setExamples("Example projects from previous years");
-          setCapacity(3);
-          setSelectedFilters("Computing and Communication Systems");
-          setAboutMe("Projects:");
+      setProfileData(({
+        profileName: "FYP Marker",
+        profileEmail: "marker@uob.com"}));
+      setBio("");
+      setBio("Topics of interest to supervise");
+      setLocation("Birmingham/Dubai or office number");
+      setContact("Email/zoom/in person");
+      setOfficeHours("Office hour date and times");
+      setBooking("Link to book meetings");
+      setExamples("Example projects from previous years");
+      setCapacity(3);
+      setSelectedFilters("Computing and Communication Systems");
+      setAboutMe("Projects:");
             
-        }
-        )
     }
 
     if (auth.role === "Supervisor") {
@@ -91,6 +81,7 @@ function UserProfile() {
           setExamples(data.examples);
           setCapacity(data.capacity);
           setSelectedFilters(data.selectedFilters);
+          setStyle(data.style);
           setAboutMe("Projects:");
         }
         )
@@ -142,6 +133,7 @@ function UserProfile() {
         formData.append("booking", booking);
         formData.append("examples", examples);
         formData.append("capacity", capacity);
+        formData.append("style", style);
         formData.append("selectedFilters", selectedFilters);
         formData.append("picture", picture);
         const response = await fetch("/api/edit-profile", {
@@ -298,17 +290,17 @@ function UserProfile() {
                   </div>
 
                   <div className="edit-profile-flex">
-                    <label className="edit-profile-label" htmlFor="examples">
+                    <label className="edit-profile-label" htmlFor="style">
                           Supervision style:
                       </label>
                       <textarea 
                           className="profile-bio-input" 
                           type="text"
-                          id = "examples"
+                          id = "style"
                           autoComplete="off"
                           value={examples}
                           onChange={(e) => {
-                            setExamples(e.target.value);
+                            setStyle(e.target.value);
                             handleFormUpdate();
                           }}
                       />
