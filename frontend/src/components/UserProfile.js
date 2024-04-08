@@ -56,6 +56,7 @@ function UserProfile() {
       setExamples("Example projects from previous years");
       setCapacity(3);
       setSelectedFilters("Computing and Communication Systems");
+      setStyle("How often meetings are held, online or in person");
       setAboutMe("Projects:");
             
     }
@@ -298,7 +299,7 @@ function UserProfile() {
                           type="text"
                           id = "style"
                           autoComplete="off"
-                          value={examples}
+                          value={style}
                           onChange={(e) => {
                             setStyle(e.target.value);
                             handleFormUpdate();

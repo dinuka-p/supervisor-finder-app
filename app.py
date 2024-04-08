@@ -193,7 +193,7 @@ def download_supervisor_table():
 
 @app.route("/api/download-active-supervisor-table")
 def download_active_supervisor_table():
-    query = ActiveSupervisors.query.with_entities(ActiveSupervisors.supervisorName, ActiveSupervisors.supervisorEmail, ActiveSupervisors.bio, ActiveSupervisors.projectExamples, ActiveSupervisors.filterWords, ActiveSupervisors.preferredContact, ActiveSupervisors.location).all()
+    query = ActiveSupervisors.query.with_entities(ActiveSupervisors.supervisorName, ActiveSupervisors.supervisorEmail, ActiveSupervisors.preferredContact, ActiveSupervisors.location, ActiveSupervisors.bookingLink, ActiveSupervisors.officeHours, ActiveSupervisors.projectExamples, ActiveSupervisors.filterWords, ActiveSupervisors.capacity, ActiveSupervisors.supervisionStyle).all()
     data = [dict(zip(ActiveSupervisors.__table__.columns.keys()[1:], row)) for row in query]    
     df = pd.DataFrame(data)
     output = BytesIO()
@@ -334,7 +334,8 @@ def supervisor_profile(getemail):
         "booking": supervisor.bookingLink,
         "examples": supervisor.projectExamples,
         "capacity": supervisor.capacity,
-        "selectedFilters": filters_list
+        "selectedFilters": filters_list,
+        "style": supervisor.supervisionStyle
     }
     return response_body
 
